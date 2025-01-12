@@ -1,119 +1,116 @@
-# Java CRUD API with Swagger Documentation
+# Müşteri Yönetim Sistemi API (Customer Management API)
 
-This repository contains a Java-based CRUD (Create, Read, Update, Delete) API integrated with Swagger for interactive API documentation. The project is designed to demonstrate a simple RESTful web service using Spring Boot, JPA (Java Persistence API), and Swagger UI.
+Bu proje, Java ve Spring Boot kullanılarak geliştirilmiş bir Müşteri Yönetim Sistemi API'sidir. Projede CRUD (Create, Read, Update, Delete) işlemleri gerçekleştirilmekte ve Swagger ile interaktif API dokümantasyonu sağlanmaktadır.
 
-## Project Overview
+## Proje Genel Bakış
 
-- Full CRUD functionality for managing entities.
-- RESTful endpoints for handling API requests.
-- Database integration using JPA.
-- API documentation generated with Swagger.
+Bu proje aşağıdaki özellikleri içerir:
 
-## Technologies Used
+- Müşteri verileri üzerinde CRUD işlemleri
+- RESTful API uç noktaları
+- JPA ile veritabanı entegrasyonu
+- Swagger UI ile API dokümantasyonu
 
-- **Java**: Core language used for development.
-- **Spring Boot**: Framework used for building the REST API.
-- **JPA (Hibernate)**: ORM tool for database interaction.
-- **Swagger**: Used for generating interactive API documentation.
-- **H2 Database**: In-memory database used for development and testing.
+## Kullanılan Teknolojiler
 
-## Getting Started
+- **Java**: Projenin ana programlama dili
+- **Spring Boot**: Uygulama geliştirme çerçevesi
+- **JPA (Hibernate)**: ORM aracı
+- **Swagger**: API dokümantasyonu için kullanılan araç
+- **MySQL**: Kalıcı veritabanı çözümü
 
-### Prerequisites
+## Gereksinimler
 
-- Java 17 or higher
+- Java 17 veya üstü
 - Maven
+- MySQL Server
 
-### Running the Project
+## Projeyi Çalıştırma
 
-1. Clone the repository:
+Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyin:
+
+1. Depoyu klonlayın:
    ```bash
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/mchtozcan/crud-entegration.git
    ```
-2. Navigate to the project directory:
+2. Proje dizinine gidin:
    ```bash
-   cd your-repository
+   cd crud-entegration
    ```
-3. Build the project using Maven:
+3. Maven ile projeyi derleyin:
    ```bash
    mvn clean install
    ```
-4. Run the application:
+4. Uygulamayı çalıştırın:
    ```bash
    mvn spring-boot:run
    ```
 
-The application will start running at `http://localhost:8080`.
+Uygulama varsayılan olarak `http://localhost:9090` adresinde çalışacaktır.
 
-## Swagger Documentation
+## Swagger Dokümantasyonu
 
-Once the application is running, you can access the Swagger UI at:
+Uygulama çalışırken, Swagger UI'ye erişerek API uç noktalarını inceleyebilirsiniz:
+
 ```
-http://localhost:8080/swagger-ui/index.html
+http://localhost:9090/swagger-ui.html
 ```
-Swagger provides an interactive way to explore and test the API endpoints.
 
-## API Endpoints
+Swagger UI, uç noktaların doğrudan tarayıcı üzerinden test edilmesini sağlar.
 
-| Method | Endpoint        | Description                   |
-|--------|-----------------|--------------------------------|
-| GET    | /api/entities   | Retrieve all entities          |
-| POST   | /api/entities   | Create a new entity            |
-| GET    | /api/entities/{id} | Retrieve a single entity by ID |
-| PUT    | /api/entities/{id} | Update an existing entity by ID |
-| DELETE | /api/entities/{id} | Delete an entity by ID         |
+## API Uç Noktaları
 
-## Database Configuration
+| HTTP Metodu | Uç Nokta            | Açıklama                       |
+| ----------- | ------------------- | ------------------------------ |
+| GET         | /app/allcustomers   | Tüm müşterileri getirir        |
+| POST        | /app/customers      | Yeni bir müşteri oluşturur     |
+| GET         | /app/customers/{id} | Belirli bir müşteriyi getirir  |
+| PUT         | /app/customers/{id} | Mevcut bir müşteriyi günceller |
+| DELETE      | /app/customers/{id} | Belirli bir müşteriyi siler    |
 
-The project uses an in-memory H2 database by default. You can access the H2 console at:
-```
-http://localhost:8080/h2-console
-```
-Default credentials:
-- **URL**: `jdbc:h2:mem:testdb`
-- **Username**: `sa`
-- **Password**: (leave it blank)
+## MySQL Veritabanı Yapılandırması
 
-## Customizing Database Configuration
+Projede MySQL kullanımı için aşağıdaki adımları izleyin:
 
-If you want to use a different database (e.g., MySQL, PostgreSQL), update the `application.properties` file located in the `src/main/resources` directory.
+1. MySQL Server'ı kurun ve çalıştırın.
+2. Aşağıdaki SQL komutunu kullanarak bir veritabanı oluşturun:
+   ```sql
+   CREATE DATABASE crud;
+   ```
+3. `src/main/resources/application.properties` dosyasını aşağıdaki şekilde güncelleyin:
 
-Example for MySQL:
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/your-database
+spring.datasource.url=jdbc:mysql://localhost:3306/crud
 spring.datasource.username=your-username
 spring.datasource.password=your-password
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-## How to Contribute
+## Katkıda Bulunma
 
-1. Fork the repository.
-2. Create a new branch:
+Katkılarınızı bekliyoruz! Lütfen katkıda bulunmak için aşağıdaki adımları izleyin:
+
+1. Depoyu çatallayın (fork).
+2. Yeni bir dal oluşturun:
    ```bash
    git checkout -b feature/your-feature-name
    ```
-3. Make your changes and commit them:
+3. Değişikliklerinizi yapın ve kaydedin:
    ```bash
    git commit -m "Add your message here"
    ```
-4. Push to your branch:
+4. Dalınızı depoya itin:
    ```bash
    git push origin feature/your-feature-name
    ```
-5. Create a pull request.
+5. Bir çekme isteği (pull request) oluşturun.
 
-## License
+## İletişim
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+Sorularınız veya geri bildirimleriniz için:
 
-## Contact
+- **GitHub**: [[https://github.com/mchtozcan]
 
-For any questions or issues, please contact:
-- **Your Name**: [your.email@example.com]
-- GitHub: [https://github.com/your-username]
 
----
 
-Happy Coding!
 
